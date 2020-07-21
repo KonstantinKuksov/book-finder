@@ -1,0 +1,30 @@
+.wrapper {
+    display: grid;
+    border: 1px solid black;
+    border-radius: 5px;
+    grid-template-columns: 1fr 3fr;
+    grid-column-gap: 10px;
+    height: 150px;
+    background-color: #bbbbbb;
+}
+
+.img {
+    height: 150px;
+    padding: 5px;
+}
+
+.img img{
+    border-radius: 5px;
+    height: 140px;
+}
+
+.description {
+    display: grid;
+    align-content: center;
+    grid-row-gap: 3px;
+}
+
+.description p {
+    margin-bottom: 0;
+    font-weight: bold;
+}
