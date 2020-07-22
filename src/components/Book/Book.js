@@ -6,14 +6,13 @@ const Book = (props) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.img}>
-                <img src={props.imgUrl} alt="book picture"/>
+                <img src={props.imgUrl} alt="book"/>
             </div>
             <div className={styles.description}>
                 <p>{`Title: ${props.title}`}</p>
                 <p>{`Author(s): ${props.author}`}</p>
-                <p>{`Year: ${props.year}`}</p>
-                <p>{`Publisher: ${props.publisher}`}</p>
-                <p>{`More info: ${props.info}`}</p>
+                <p>{`Publication date: ${props.year}`}</p>
+                <p><a href={props.link}>more details</a></p>
             </div>
         </div>
     )
