@@ -40,7 +40,7 @@ const App = (props) => {
             <h1 className="title">Book Finder</h1>
             <div className="inputWrapper">
                 <Search
-                    placeholder="input search text"
+                    placeholder="input search book"
                     onSearch={ () => props.getBooks(props.newText) }
                     className="search"
                     value={props.newText}

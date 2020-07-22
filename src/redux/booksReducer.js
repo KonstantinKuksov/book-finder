@@ -9,7 +9,7 @@ const initialState = {
             title: 'First title',
             author: 'First Author',
             year: '2005',
-            img: 'https://lh3.googleusercontent.com/proxy/QD9xeTeuuIOeRmf_8OougRb75px2ZVyMRYbt5O20P4awi0Fsp88PIq1fRuYaU9DdSHBNa8DIm3_AiXDB1yfH8kMKBz33dpH3NwHJ76O8ykNmqmun2g',
+            img: 'https://lh3.googleusercontent.com/proxy/1Dwv83pCovRFCdnPkiWhXzggJgJoZ_GRAFev57E6F_lMDH22N85DJ9bEXMz1OFantu5f12enMhZhVqSx37QQCX4Ek1rFi_owt0pPK6gspMx7NrMpHSmGXmMJls53nxuZEOFYalo-8vs',
             link: '/'
         },
         {
@@ -17,7 +17,7 @@ const initialState = {
             title: 'Second title',
             author: 'Second Author',
             year: '2010',
-            img: 'https://lh3.googleusercontent.com/proxy/QD9xeTeuuIOeRmf_8OougRb75px2ZVyMRYbt5O20P4awi0Fsp88PIq1fRuYaU9DdSHBNa8DIm3_AiXDB1yfH8kMKBz33dpH3NwHJ76O8ykNmqmun2g',
+            img: 'https://lh3.googleusercontent.com/proxy/1Dwv83pCovRFCdnPkiWhXzggJgJoZ_GRAFev57E6F_lMDH22N85DJ9bEXMz1OFantu5f12enMhZhVqSx37QQCX4Ek1rFi_owt0pPK6gspMx7NrMpHSmGXmMJls53nxuZEOFYalo-8vs',
             link: '/'
         },
         {
@@ -25,7 +25,7 @@ const initialState = {
             title: 'Third title',
             author: 'Third Author',
             year: '2015',
-            img: 'https://lh3.googleusercontent.com/proxy/QD9xeTeuuIOeRmf_8OougRb75px2ZVyMRYbt5O20P4awi0Fsp88PIq1fRuYaU9DdSHBNa8DIm3_AiXDB1yfH8kMKBz33dpH3NwHJ76O8ykNmqmun2g',
+            img: 'https://lh3.googleusercontent.com/proxy/1Dwv83pCovRFCdnPkiWhXzggJgJoZ_GRAFev57E6F_lMDH22N85DJ9bEXMz1OFantu5f12enMhZhVqSx37QQCX4Ek1rFi_owt0pPK6gspMx7NrMpHSmGXmMJls53nxuZEOFYalo-8vs',
             link: '/'
         }
     ]

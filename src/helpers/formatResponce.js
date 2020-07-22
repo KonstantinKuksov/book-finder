@@ -4,7 +4,7 @@ const formatResponse = (arr) => {
             title: item.volumeInfo.title,
             author: item.volumeInfo.authors.join(', '),
             year: item.volumeInfo.publishedDate,
-            //img: item.volumeInfo.imageLinks.smallThumbnail,
+            img: item.volumeInfo.imageLinks.smallThumbnail,
             link: item.volumeInfo.infoLink
     }) );
 };
