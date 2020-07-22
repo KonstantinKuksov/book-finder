@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {Input} from 'antd';
 import Book from "./components/Book/Book";
@@ -29,6 +29,12 @@ const App = (props) => {
         )
     });
 
+    const inputRef = React.createRef();
+
+    useEffect( () => {
+        inputRef.current.focus();
+    });
+
     return (
         <>
             <h1 className="title">Book Finder</h1>
@@ -39,6 +45,7 @@ const App = (props) => {
                     className="search"
                     value={props.newText}
                     onChange={onInputChange}
+                    ref={inputRef}
                 />
             </div>
             <div className="booksWrapper">
