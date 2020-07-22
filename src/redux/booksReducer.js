@@ -50,9 +50,9 @@ export const addBooks = (arrBooks) => ({
     books: arrBooks
 });
 
-export const getTenBooks = () => {
+export const getTenBooks = (text) => {
     return (dispatch) => {
-        getBooks()
+        getBooks(text)
             .then(response => dispatch(addBooks(formatResponse(response))));
     };
 };

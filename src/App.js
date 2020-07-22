@@ -17,10 +17,6 @@ const App = (props) => {
 
     const {Search} = Input;
 
-    /*const renderMoreBooks = () => {
-        props.getBooks()
-    }*/
-
     const booksListRender = props.books.map((book) => {
         return (
             <Book title={book.title}
@@ -35,11 +31,11 @@ const App = (props) => {
 
     return (
         <>
-            <h1 className="title" onClick={props.getBooks}>Book Finder</h1>
+            <h1 className="title">Book Finder</h1>
             <div className="inputWrapper">
                 <Search
                     placeholder="input search text"
-                    onSearch={value => console.log(value)}
+                    onSearch={ () => props.getBooks(props.newText) }
                     className="search"
                     value={props.newText}
                     onChange={onInputChange}

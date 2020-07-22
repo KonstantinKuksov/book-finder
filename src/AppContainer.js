@@ -12,9 +12,9 @@ const mapDispatchToProps = (dispatch) => ({
     updateInputText: (text) => {
         dispatch(updateInput(text));
     },
-    getBooks: () => {
-        dispatch(getTenBooks())
-}
+    getBooks: (text) => {
+        dispatch(getTenBooks(text))
+    }
 });
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
