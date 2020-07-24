@@ -4,34 +4,37 @@ import {Input} from 'antd';
 import Book from "./components/Book/Book";
 
 import 'antd/dist/antd.css';
-import './App.css';
+import './app.css';
+import formatResponse from "./helpers/formatResponce";
+
+const {Search} = Input;
 
 const App = (props) => {
 
-    //debugger;
+    const {books, newText, getBooks, updateInputText, zeroingBooksList} = props;
+
+    const booksList = formatResponse(books);
 
     const onInputChange = (event) => {
         const text = event.target.value;
-        props.updateInputText(text);
-    }
+        updateInputText(text);
+    };
 
-    const {Search} = Input;
+    const onSearch = () => {
+        zeroingBooksList();
+        getBooks(newText);
+    };
 
-    const booksListRender = props.books.map((book) => {
+    const booksListRender = booksList.map((book) => {
         return (
-            <Book title={book.title}
-                  author={book.author}
-                  year={book.year}
-                  imgUrl={book.img}
-                  key={book.id}
-                  link={book.link}
-            />
+            <Book book={{...book}}
+                  key={book.id}/>
         )
     });
 
     const inputRef = React.createRef();
 
-    useEffect( () => {
+    useEffect(() => {
         inputRef.current.focus();
     });
 
@@ -41,18 +44,20 @@ const App = (props) => {
             <div className="inputWrapper">
                 <Search
                     placeholder="input search book"
-                    onSearch={ () => props.getBooks(props.newText) }
+                    onSearch={onSearch}
                     className="search"
-                    value={props.newText}
+                    value={newText}
                     onChange={onInputChange}
                     ref={inputRef}
                 />
             </div>
+
             <div className="booksWrapper">
                 {booksListRender}
             </div>
+
         </>
     );
-}
+};
 
 export default App;
