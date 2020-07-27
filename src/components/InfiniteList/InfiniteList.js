@@ -3,17 +3,16 @@ import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 
 const InfiniteList = (props) => {
-
     return (
         <div className="demo-infinite-container">
             <InfiniteScroll
                 initialLoad={false}
                 pageStart={0}
-                loadMore={props.getBooks}
+                loadMore={props.loadMore}
                 hasMore={true}
-                useWindow={false}
+                useWindow={true}
             >
-                {props.children}{/*<List />*/}
+                {props.children}
             </InfiniteScroll>
         </div>
     );

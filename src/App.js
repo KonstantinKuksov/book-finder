@@ -5,6 +5,7 @@ import {Input, Button} from 'antd';
 import 'antd/dist/antd.css';
 import './app.css';
 import BooksList from "./components/BooksList/BooksList";
+import InfiniteList from "./components/InfiniteList/InfiniteList";
 import formatResponse from "./helpers/formatResponce";
 
 const {Search} = Input;
@@ -19,7 +20,7 @@ const App = (props) => {
 
     const [inputText, updateInputText] = useState("");
 
-    const [moreButton, toggleMoreButton] = useState(false);
+    //const [moreButton, toggleMoreButton] = useState(false);
 
     const booksList = formatResponse(books);
 
@@ -27,7 +28,6 @@ const App = (props) => {
         zeroingSearchIndex();
         const text = event.target.value;
         updateInputText(text);
-        inputRef.current.focus();
     };
 
     const onSearch = () => {
@@ -35,19 +35,14 @@ const App = (props) => {
         zeroingBooksList();
         zeroingSearchIndex();
         inputText ? getBooks(inputText, 0) : getBooks("empty", 0);
-        toggleMoreButton(true);
+        //toggleMoreButton(true);
     };
 
-    const inputRef = React.createRef();
-    const moreButtonRef = React.createRef();
-
-    useEffect(() => {
-        searchIndex ? moreButtonRef.current.focus() : inputRef.current.focus();
-    });
-
     const getMoreResults = () => {
-        toggleIsFetching();
-        getBooks(inputText, searchIndex);
+        if (searchIndex && !isFetching) {
+            toggleIsFetching();
+            getBooks(inputText, searchIndex);
+        }
     }
 
     return (
@@ -60,22 +55,22 @@ const App = (props) => {
                     className="search"
                     value={inputText}
                     onChange={onInputChange}
-                    ref={inputRef}
                 />
             </div>
 
-            <BooksList booksList={booksList}
-                       isFetching={isFetching}/>
+            <InfiniteList loadMore={getMoreResults}>
+                <BooksList booksList={booksList}
+                           isFetching={isFetching}/>
+            </InfiniteList>
 
-            <div className="more-results-container">
+            {/*<div className="more-results-container">
                 {moreButton && (
                     <Button type="primary"
                             className="more-results"
-                            onClick={getMoreResults}
-                            ref={moreButtonRef}>
+                            onClick={getMoreResults}>
                         More results
                     </Button>)}
-            </div>
+            </div>*/}
 
         </>
     );

@@ -16,8 +16,8 @@ const reducer = (state = initialState, action) => {
                     ...state,
                     books: [...state.books, ...action.books.items],
                     totalItems: action.books.totalItems,
-                    searchIndex: state.searchIndex + 10,
-                    isFetching: !state.isFetching
+                    searchIndex: state.searchIndex + 20,
+                    isFetching: false
                 };
             case ZEROING_LIST:
                 return {
@@ -33,7 +33,7 @@ const reducer = (state = initialState, action) => {
             case TOGGLE_IS_FETCHING:
                 return {
                     ...state,
-                    isFetching: !state.isFetching
+                    isFetching: true
                 }
             default:
                 return state;
