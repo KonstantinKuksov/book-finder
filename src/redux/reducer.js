@@ -7,7 +7,7 @@ const initialState = {
     searchIndex: 0
 };
 
-const booksReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
 
         switch (action.type) {
             case ADD_BOOKS:
@@ -56,4 +56,4 @@ export const getTenBooks = (text, index) => {
     };
 };
 
-export default booksReducer;
+export default reducer;

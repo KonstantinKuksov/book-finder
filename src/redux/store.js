@@ -1,14 +1,8 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
+import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
-import inputReducer from "./inputReducer";
-import booksReducer from "./booksReducer";
+import reducer from "./reducer";
 
-const reducers = combineReducers({
-    inputReducer,
-    booksReducer
-});
-
-let store = createStore(reducers, applyMiddleware(thunk));
+let store = createStore(reducer, applyMiddleware(thunk));
 
 window.store = store;
 

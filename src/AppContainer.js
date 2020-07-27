@@ -1,19 +1,14 @@
 import {connect} from "react-redux";
 import App from "./App";
-import {getTenBooks, zeroingBooksList, zeroingSearchIndex} from "./redux/booksReducer";
-import {updateInput} from "./redux/inputReducer";
+import {getTenBooks, zeroingBooksList, zeroingSearchIndex} from "./redux/reducer";
 
 const mapStateToProps = (state) => ({
-    newText: state.inputReducer.inputText,
-    books: state.booksReducer.books,
-    totalItems: state.booksReducer.totalItems,
-    searchIndex: state.booksReducer.searchIndex
+    books: state.books,
+    totalItems: state.totalItems,
+    searchIndex: state.searchIndex
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    updateInputText: (text) => {
-        dispatch(updateInput(text));
-    },
     getBooks: (text, index) => {
         dispatch(getTenBooks(text, index))
     },

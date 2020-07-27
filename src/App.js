@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {Input, Button} from 'antd';
 import Book from "./components/Book/Book";
@@ -12,9 +12,11 @@ const {Search} = Input;
 const App = (props) => {
 
     const {
-        books, newText, getBooks, updateInputText, zeroingBooksList,
+        books, getBooks, zeroingBooksList,
         zeroingSearchIndex, searchIndex
     } = props;
+
+    const [inputText, updateInputText] = useState("");
 
     const booksList = formatResponse(books);
 
@@ -28,7 +30,7 @@ const App = (props) => {
     const onSearch = () => {
         zeroingBooksList();
         zeroingSearchIndex();
-        newText ? getBooks(newText, 0) : getBooks("empty", 0);
+        inputText ? getBooks(inputText, 0) : getBooks("empty", 0);
     };
 
     const booksListRender = booksList.map((book) => {
@@ -46,7 +48,7 @@ const App = (props) => {
     });
 
     const getMoreResults = () => {
-        getBooks(newText, searchIndex);
+        getBooks(inputText, searchIndex);
     }
 
     return (
@@ -57,7 +59,7 @@ const App = (props) => {
                     placeholder="input search book"
                     onSearch={onSearch}
                     className="search"
-                    value={newText}
+                    value={inputText}
                     onChange={onInputChange}
                     ref={inputRef}
                 />
