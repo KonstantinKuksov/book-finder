@@ -24,3 +24,13 @@
   grid-column-gap: 20px;
   grid-row-gap: 20px;
 }
+
+.more-results {
+
+}
+
+.more-results-container {
+  display: grid;
+  margin-top: 20px;
+  justify-content: center;
+}

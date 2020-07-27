@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 
-import {Input} from 'antd';
+import {Input, Button} from 'antd';
 import Book from "./components/Book/Book";
 
 import 'antd/dist/antd.css';
@@ -11,18 +11,24 @@ const {Search} = Input;
 
 const App = (props) => {
 
-    const {books, newText, getBooks, updateInputText, zeroingBooksList} = props;
+    const {
+        books, newText, getBooks, updateInputText, zeroingBooksList,
+        zeroingSearchIndex, searchIndex
+    } = props;
 
     const booksList = formatResponse(books);
 
     const onInputChange = (event) => {
+        zeroingSearchIndex();
         const text = event.target.value;
         updateInputText(text);
+        inputRef.current.focus();
     };
 
     const onSearch = () => {
         zeroingBooksList();
-        getBooks(newText);
+        zeroingSearchIndex();
+        newText ? getBooks(newText, 0) : getBooks("empty", 0);
     };
 
     const booksListRender = booksList.map((book) => {
@@ -33,10 +39,15 @@ const App = (props) => {
     });
 
     const inputRef = React.createRef();
+    const moreButtonRef = React.createRef();
 
     useEffect(() => {
-        inputRef.current.focus();
+        searchIndex ? moreButtonRef.current.focus() : inputRef.current.focus();
     });
+
+    const getMoreResults = () => {
+        getBooks(newText, searchIndex);
+    }
 
     return (
         <>
@@ -55,7 +66,14 @@ const App = (props) => {
             <div className="booksWrapper">
                 {booksListRender}
             </div>
-
+            <div className="more-results-container">
+                <Button type="primary"
+                        className="more-results"
+                        onClick={getMoreResults}
+                        ref={moreButtonRef}>
+                    More results
+                </Button>
+            </div>
         </>
     );
 };
