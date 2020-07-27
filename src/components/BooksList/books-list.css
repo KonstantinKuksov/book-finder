@@ -1,0 +1,20 @@
+.avatar-big {
+    height: 80px;
+    width: 50px;
+    border-radius: unset;
+}
+
+.ant-list-grid .ant-col .list-item-styles {
+    display: grid;
+}
+
+.list-item-styles {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 2fr 1fr;
+    justify-content: space-between;
+}
+
+.content-container {
+    text-align: end;
+}

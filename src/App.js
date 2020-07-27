@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 
 import {Input, Button} from 'antd';
-import Book from "./components/Book/Book";
 
 import 'antd/dist/antd.css';
 import './app.css';
+import BooksList from "./components/BooksList/BooksList";
 import formatResponse from "./helpers/formatResponce";
 
 const {Search} = Input;
@@ -13,10 +13,13 @@ const App = (props) => {
 
     const {
         books, getBooks, zeroingBooksList,
-        zeroingSearchIndex, searchIndex
+        zeroingSearchIndex, searchIndex,
+        isFetching, toggleIsFetching
     } = props;
 
     const [inputText, updateInputText] = useState("");
+
+    const [moreButton, toggleMoreButton] = useState(false);
 
     const booksList = formatResponse(books);
 
@@ -28,17 +31,12 @@ const App = (props) => {
     };
 
     const onSearch = () => {
+        toggleIsFetching();
         zeroingBooksList();
         zeroingSearchIndex();
         inputText ? getBooks(inputText, 0) : getBooks("empty", 0);
+        toggleMoreButton(true);
     };
-
-    const booksListRender = booksList.map((book) => {
-        return (
-            <Book book={{...book}}
-                  key={book.id}/>
-        )
-    });
 
     const inputRef = React.createRef();
     const moreButtonRef = React.createRef();
@@ -48,6 +46,7 @@ const App = (props) => {
     });
 
     const getMoreResults = () => {
+        toggleIsFetching();
         getBooks(inputText, searchIndex);
     }
 
@@ -65,17 +64,19 @@ const App = (props) => {
                 />
             </div>
 
-            <div className="booksWrapper">
-                {booksListRender}
-            </div>
+            <BooksList booksList={booksList}
+                       isFetching={isFetching}/>
+
             <div className="more-results-container">
-                <Button type="primary"
-                        className="more-results"
-                        onClick={getMoreResults}
-                        ref={moreButtonRef}>
-                    More results
-                </Button>
+                {moreButton && (
+                    <Button type="primary"
+                            className="more-results"
+                            onClick={getMoreResults}
+                            ref={moreButtonRef}>
+                        More results
+                    </Button>)}
             </div>
+
         </>
     );
 };

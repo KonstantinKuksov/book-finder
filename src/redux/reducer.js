@@ -1,10 +1,11 @@
 import {getBooks} from "../api/api";
-import {ADD_BOOKS, ZEROING_LIST, ZEROING_SEARCH_INDEX} from "./actions";
+import {ADD_BOOKS, TOGGLE_IS_FETCHING, ZEROING_LIST, ZEROING_SEARCH_INDEX} from "./actions";
 
 const initialState = {
     books: [],
     totalItems: 0,
-    searchIndex: 0
+    searchIndex: 0,
+    isFetching: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -15,7 +16,8 @@ const reducer = (state = initialState, action) => {
                     ...state,
                     books: [...state.books, ...action.books.items],
                     totalItems: action.books.totalItems,
-                    searchIndex: state.searchIndex + 10
+                    searchIndex: state.searchIndex + 10,
+                    isFetching: !state.isFetching
                 };
             case ZEROING_LIST:
                 return {
@@ -27,6 +29,11 @@ const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     searchIndex: 0
+                };
+            case TOGGLE_IS_FETCHING:
+                return {
+                    ...state,
+                    isFetching: !state.isFetching
                 }
             default:
                 return state;
@@ -46,6 +53,10 @@ export const zeroingBooksList = () => ({
 
 export const zeroingSearchIndex = () => ({
    type: ZEROING_SEARCH_INDEX
+});
+
+export const toggleIsFetching = () => ({
+    type: TOGGLE_IS_FETCHING
 });
 
 

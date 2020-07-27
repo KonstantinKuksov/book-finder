@@ -8,6 +8,7 @@
 
 .inputWrapper {
   margin-top: 30px;
+  margin-bottom: 30px;
   display: grid;
   justify-content: center;
   padding: 0 10px;
@@ -33,4 +34,25 @@
   display: grid;
   margin-top: 20px;
   justify-content: center;
+}
+
+.avatar-big {
+  height: 80px;
+  width: 50px;
+  border-radius: unset;
+}
+
+.ant-list-grid .ant-col .list-item-styles {
+  display: grid;
+}
+
+.list-item-styles {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  justify-content: space-between;
+}
+
+.content-container {
+  text-align: end;
 }

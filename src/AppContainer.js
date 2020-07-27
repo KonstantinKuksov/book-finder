@@ -1,11 +1,12 @@
 import {connect} from "react-redux";
 import App from "./App";
-import {getTenBooks, zeroingBooksList, zeroingSearchIndex} from "./redux/reducer";
+import {getTenBooks, toggleIsFetching, zeroingBooksList, zeroingSearchIndex} from "./redux/reducer";
 
 const mapStateToProps = (state) => ({
     books: state.books,
     totalItems: state.totalItems,
-    searchIndex: state.searchIndex
+    searchIndex: state.searchIndex,
+    isFetching: state.isFetching
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -17,6 +18,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     zeroingSearchIndex: () => {
         dispatch(zeroingSearchIndex());
+    },
+    toggleIsFetching: () => {
+        dispatch(toggleIsFetching());
     }
 });
 
