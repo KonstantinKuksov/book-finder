@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router} from "react-router-dom";
 
 import {Provider} from "react-redux";
 import AppContainer from "./AppContainer";
@@ -9,7 +10,9 @@ import './index.css'
 
 ReactDOM.render(
     <Provider store={store}>
-        <AppContainer/>
+        <Router>
+            <AppContainer/>
+        </Router>
     </Provider>,
     document.getElementById('root')
 );

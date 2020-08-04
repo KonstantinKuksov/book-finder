@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
+import { useHistory } from "react-router-dom";
 
-import {Input, Button} from 'antd';
-
-import 'antd/dist/antd.css';
-import './app.css';
+import {Input} from 'antd';
 import BooksList from "./components/BooksList/BooksList";
 import InfiniteList from "./components/InfiniteList/InfiniteList";
 import formatResponse from "./helpers/formatResponce";
+
+import 'antd/dist/antd.css';
+import './app.css';
 
 const {Search} = Input;
 
@@ -20,14 +21,13 @@ const App = (props) => {
 
     const [inputText, updateInputText] = useState("");
 
-    //const [moreButton, toggleMoreButton] = useState(false);
-
     const booksList = formatResponse(books);
+
+    const history = useHistory();
 
     const onInputChange = (event) => {
         zeroingSearchIndex();
-        const text = event.target.value;
-        updateInputText(text);
+        updateInputText(event.target.value);
     };
 
     const onSearch = () => {
@@ -35,7 +35,6 @@ const App = (props) => {
         zeroingBooksList();
         zeroingSearchIndex();
         inputText ? getBooks(inputText, 0) : getBooks("empty", 0);
-        //toggleMoreButton(true);
     };
 
     const getMoreResults = () => {
@@ -62,15 +61,6 @@ const App = (props) => {
                 <BooksList booksList={booksList}
                            isFetching={isFetching}/>
             </InfiniteList>
-
-            {/*<div className="more-results-container">
-                {moreButton && (
-                    <Button type="primary"
-                            className="more-results"
-                            onClick={getMoreResults}>
-                        More results
-                    </Button>)}
-            </div>*/}
 
         </>
     );
