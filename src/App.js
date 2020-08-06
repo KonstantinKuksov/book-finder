@@ -26,8 +26,10 @@ const App = (props) => {
     const history = useHistory();
 
     const onInputChange = (event) => {
+        const text = event.target.value;
         zeroingSearchIndex();
-        updateInputText(event.target.value);
+        updateInputText(text);
+        history.push(`/search=${text}`)
     };
 
     const onSearch = () => {
